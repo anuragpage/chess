@@ -1,492 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Anurag Academy - Master the 64 Squares</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chess Anurag Academy — Mastering Minds, One Move at a Time</title>
+<meta name="description" content="Professional chess coaching for 10+ years. Online, offline & home sessions. From beginner to advanced." />
+<meta property="og:title" content="Chess Anurag Academy" />
+<meta property="og:description" content="Mastering Minds, One Move at a Time" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#faf7f2; --fg:#2b2320; --muted:#6b5f57; --card:#fff;
+    --border:#e8e0d4; --primary:#7a4a2b; --accent:#c9a24b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
 
-    <style>
-        /* CSS Styling Starts Here */
-        :root {
-            --primary-color: #D4AF37; /* A classy gold color */
-            --dark-bg: #222222;
-            --light-bg: #333333;
-            --text-color: #f4f4f4;
-            --font-primary: 'Poppins', sans-serif;
-            --font-secondary: 'Playfair Display', serif;
-        }
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;background:rgba(250,247,242,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50}
+  nav .container{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .logo{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-weight:600;font-size:18px}
+  .logo svg{color:var(--primary)}
+  .nav-phone{color:var(--primary);font-weight:500;font-size:14px;display:flex;align-items:center;gap:6px}
+  @media (max-width:640px){.nav-phone{display:none}}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  /* Hero */
+  .hero{padding:120px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+  @media (min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;padding:40px 0}}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#f0e8d9;color:var(--primary);font-size:12px;font-weight:500;margin-bottom:20px}
+  .hero h1{font-size:clamp(36px,6vw,60px);margin-bottom:20px}
+  .hero h1 span{color:var(--primary)}
+  .hero p.lead{font-size:18px;color:var(--muted);margin-bottom:28px}
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:500;font-size:14px;transition:transform .15s,background .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:#633a20}
+  .btn-outline{background:var(--card);color:var(--fg);border:1px solid var(--border)}
+  .hero-img{border-radius:20px;box-shadow:0 30px 60px -20px rgba(122,74,43,.3);aspect-ratio:4/3;object-fit:cover;width:100%;background:linear-gradient(135deg,#2b2320,#7a4a2b)}
 
-        html {
-            scroll-behavior: smooth;
-        }
+  /* Sections */
+  section{padding:80px 0}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 48px}
+  .section-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+  .section-head p{color:var(--muted)}
 
-        body {
-            font-family: var(--font-primary);
-            background-color: var(--dark-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+  .grid-3{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:640px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(122,74,43,.15)}
+  .card .icon{width:52px;height:52px;border-radius:14px;background:#f0e8d9;color:var(--primary);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:14px}
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 2rem;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background: var(--dark-bg);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            border-bottom: 2px solid var(--primary-color);
-        }
+  .about{background:#f3ede2;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* Reviews */
+  .reviews{background:#efe7d8;text-align:center}
+  .stars{color:var(--accent);font-size:24px;letter-spacing:2px;margin-bottom:16px}
 
-        .logo {
-            font-family: var(--font-secondary);
-            font-size: 2rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1580541832626-2a7131ee809f?q=80&w=2070&auto-format&fit=crop') no-repeat center center/cover;
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-family: var(--font-secondary);
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero-content h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        /* NEW HERO LINKS STYLES */
-        .hero-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .hero-pill {
-            display: inline-block;
-            background-color: rgba(244, 244, 244, 0.1);
-            border: 1px solid var(--primary-color);
-            color: var(--text-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        .hero-pill:hover {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-        }
-        .hero-pill i {
-            margin-right: 8px;
-        }
-        .hero-pill.primary-action {
-            background-color: var(--primary-color);
-            color: var(--dark-bg);
-            font-size: 1.1rem;
-            padding: 0.8rem 1.5rem;
-        }
-        .hero-pill.primary-action:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #333;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
-        
-        /* Section Styling */
-        section {
-            padding: 5rem 0;
-        }
-        
-        section:nth-child(even) {
-            background: var(--light-bg);
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: var(--font-secondary);
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title span {
-            color: var(--primary-color);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 350px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .about-text {
-            flex: 1.5;
-        }
-
-        /* Sessions Section */
-        .session-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .session-card {
-            background: var(--dark-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--primary-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .session-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .session-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .session-card h3 {
-            font-family: var(--font-secondary);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .session-card p {
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            flex-grow: 1;
-        }
-
-        /* Testimonials Section */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .testimonial-card {
-            background: var(--light-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 5px solid var(--primary-color);
-        }
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        .testimonial-card .author {
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: right;
-        }
-
-        /* Call to Action Banner */
-        #cta-banner {
-            background: var(--primary-color);
-            color: var(--dark-bg);
-            padding: 2.5rem 0;
-            text-align: center;
-        }
-
-        #cta-banner p {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        #cta-banner a {
-            color: #111;
-            text-decoration: underline;
-            font-weight: 700;
-            transition: color 0.3s ease;
-        }
-
-        #cta-banner a:hover {
-            color: #ffffff;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: #aaa;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .social-links a {
-            color: #aaa;
-            font-size: 1.5rem;
-            margin: 0 0.75rem;
-            transition: color 0.3s ease;
-        }
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        footer p {
-            margin-top: 1rem;
-        }
-
-        /* Responsive Design */
-        @media(max-width: 768px) {
-            .logo { font-size: 1.5rem; }
-            
-            nav ul {
-                display: none;
-            }
-
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1rem; }
-
-            .about-content {
-                flex-direction: column;
-            }
-            
-            section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  /* Footer */
+  footer{padding:64px 0;border-top:1px solid var(--border);text-align:center}
+  .socials{display:flex;justify-content:center;gap:12px;margin:24px 0}
+  .social{width:44px;height:44px;border-radius:999px;background:#f0e8d9;color:var(--muted);display:inline-flex;align-items:center;justify-content:center;transition:background .2s,color .2s,transform .2s}
+  .social:hover{background:var(--primary);color:#fff;transform:scale(1.08)}
+  .footer-phone{color:var(--primary);font-weight:500;font-size:18px;display:inline-flex;align-items:center;gap:8px;margin-top:16px}
+  .copyright{color:var(--muted);font-size:14px;margin-top:24px}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <a href="#hero" class="logo"><i class="fa-solid fa-chess-queen"></i>Chess Anurag Academy</a>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#sessions">Sessions</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20your%20chess%20sessions." target="_blank">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<nav>
+  <div class="container">
+    <a href="#" class="logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9 5h2v2H8v2h1l-1 6h8l-1-6h1V7h-3V5h2l-3-3zM7 17h10v2H7z"/></svg>
+      Chess Anurag Academy
+    </a>
+    <a href="tel:+916283266268" class="nav-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+      +91 62832 66268
+    </a>
+  </div>
+</nav>
 
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Master the <span>64 Squares</span></h1>
-                <p>From absolute beginners to aspiring grandmasters, Chess Anurag Academy is your next move towards excellence. Join us to unlock your strategic potential. 📞+91 62832 66268</p>
-                
-                <div class="hero-links">
-                    <a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20your%20chess%20classes." class="hero-pill primary-action" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
-                    <a href="tel:+916283266268" class="hero-pill primary-action"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a href="#about" class="hero-pill">About</a>
-                    <a href="#sessions" class="hero-pill">Options</a>
-                    <a href="#testimonials" class="hero-pill">Testimonials</a>
-                    <a href="https://share.google/XMdPLA5F0EuHWsgq3" class="hero-pill" target="_blank">Location <i class="fa-solid fa-map-location-dot"></i></a>
-                    <a href="#socials" class="hero-pill">Social Media</a>
-                </div>
-            </div>
-        </section>
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">♛ Professional Chess Coaching</div>
+      <h1>Chess Anurag <span>Academy</span></h1>
+      <p class="lead">Mastering Minds, One Move at a Time</p>
+      <div class="btns">
+        <a href="https://wa.me/916283266268" target="_blank" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.4 5.2L2 22l4.9-1.4C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          WhatsApp Us
+        </a>
+        <a href="tel:+916283266268" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+    </div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=1200&q=80" alt="Chess board with pieces" />
+  </div>
+</section>
 
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title">About <span>The Academy</span></h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=2071&auto-format&fit=crop" alt="Founder Anurag playing chess">
-                    </div>
-                    <div class="about-text">
-                        <h3>Welcome to the Mind Arena!</h3>
-                        <p>Chess Anurag Academy was founded by <strong>Anurag Sharma</strong>, expert with over 15 years of competitive experience and a deep passion for teaching. Our mission is not just to teach the rules of chess, but to instill a love for the game while cultivating critical thinking, patience, and foresight in every student.</p>
-                        <p>We believe that chess is more than just a game—it's a workout for the brain. We use a combination of classic teachings and modern technology to provide a comprehensive and fun learning experience for all age groups.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- About -->
+<section class="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>A Decade of Excellence</h2>
+      <p>For over ten years, we have been nurturing chess talent across all skill levels — from first-time players to seasoned competitors.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><div class="icon">👥</div><h3>10+ Years</h3><p>Of dedicated chess coaching experience.</p></div>
+      <div class="card"><div class="icon">📈</div><h3>All Levels</h3><p>From beginner fundamentals to advanced strategies.</p></div>
+      <div class="card"><div class="icon">🏆</div><h3>Champions</h3><p>Our students have won prizes at various competitions.</p></div>
+    </div>
+  </div>
+</section>
 
-        <section id="sessions">
-            <div class="container">
-                <h2 class="section-title">Our Training <span>Sessions</span></h2>
-                <div class="session-grid">
-                    <div class="session-card">
-                        <div>
-                            <i class="fa-solid fa-users"></i>
-                            <h3>Group Online Sessions</h3>
-                            <p>Learn in a fun, interactive, and competitive group environment. Perfect for students who thrive on collaboration and friendly rivalries.</p>
-                        </div>
-                        <a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20the%20Group%20Online%20Sessions." class="btn" target="_blank">Enroll Now</a>
-                    </div>
-                    <div class="session-card">
-                        <div>
-                            <i class="fa-solid fa-user"></i>
-                            <h3>Individual Online Sessions</h3>
-                            <p>Get personalized, one-on-one coaching tailored to your specific strengths and weaknesses. The fastest way to improve your game.</p>
-                        </div>
-                        <a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20the%20Individual%20Online%20Sessions." class="btn" target="_blank">Enroll Now</a>
-                    </div>
-                    <div class="session-card">
-                        <div>
-                            <i class="fa-solid fa-house-user"></i>
-                            <h3>Home Offline Sessions</h3>
-                            <p>Enjoy the convenience of professional chess coaching in the comfort of your own home. Available for select locations.</p>
-                        </div>
-                        <a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20Home%20Offline%20Sessions." class="btn" target="_blank">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- Sessions -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Learn Your Way</h2>
+      <p>Flexible coaching options designed to fit your schedule and learning style.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><div class="icon">💻</div><h3>Online Sessions</h3><p>Learn from anywhere with interactive virtual coaching.</p></div>
+      <div class="card"><div class="icon">🏛️</div><h3>Offline Sessions</h3><p>In-person training at our academy with structured curriculum.</p></div>
+      <div class="card"><div class="icon">🏠</div><h3>Home Sessions</h3><p>Personalized one-on-one coaching in the comfort of your home.</p></div>
+    </div>
+  </div>
+</section>
 
-        <section id="testimonials">
-            <div class="container">
-                <h2 class="section-title">What Our <span>Students Say</span></h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p>"Anurag sir is a great teacher, he is very patient with kids and makes chess fun. My son has improved a lot in a very short time. Highly recommended!"</p>
-                        <div class="author">- Priya S.</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Best chess academy for all age groups... Sir explains every concept clearly and focuses on building a strong foundation. The approach is very professional."</p>
-                        <div class="author">- Rohan M.</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"My daughter's strategic thinking has improved immensely since joining. She is always excited for her next class. Thank you for the wonderful coaching."</p>
-                        <div class="author">- Anjali K.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Reviews -->
+<section class="reviews">
+  <div class="container">
+    <div class="stars">★ ★ ★ ★ ★</div>
+    <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:12px">Top Google Ratings</h2>
+    <p style="color:var(--muted);margin-bottom:28px">Trusted by students and parents alike.</p>
+    <a href="https://share.google/GobNgLjou3XhgiWQk" target="_blank" class="btn btn-outline">📍 View Google Reviews →</a>
+  </div>
+</section>
 
-    <section id="cta-banner">
-        <div class="container">
-            <p>
-                To join our insightful Chess Classes, 
-                <a href="https://wa.me/916283266268?text=Hello!%20I'm%20interested%20in%20your%20chess%20classes." target="_blank">WhatsApp</a> 
-                or call us at +91 62832 66268
-            </p>
-        </div>
-    </section>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="logo" style="justify-content:center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9 5h2v2H8v2h1l-1 6h8l-1-6h1V7h-3V5h2l-3-3zM7 17h10v2H7z"/></svg>
+      Chess Anurag Academy
+    </div>
+    <a href="tel:+916283266268" class="footer-phone">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+      +91 62832 66268
+    </a>
+    <div class="socials">
+      <a class="social" href="https://wa.me/916283266268" target="_blank" aria-label="WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.4 5.2L2 22l4.9-1.4C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+      </a>
+      <a class="social" href="https://youtube.com/@chessanurag" target="_blank" aria-label="YouTube">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.5 15.5v-7l6.4 3.5-6.4 3.5z"/></svg>
+      </a>
+      <a class="social" href="https://instagram.com/chessanuragacademy" target="_blank" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
+      </a>
+      <a class="social" href="https://facebook.com/chessanurag" target="_blank" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12C24 5.4 18.6 0 12 0S0 5.4 0 12c0 6 4.4 11 10.1 11.9v-8.4H7.1V12h3v-2.7c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3H15.8c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8V24C19.6 23.1 24 18 24 12z"/></svg>
+      </a>
+      <a class="social" href="https://x.com/chessanurag" target="_blank" aria-label="X">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.3h3.3l-7.2 8.3 8.5 11.2h-6.6l-5.2-6.8-6 6.8H1.7l7.7-8.8L1.3 2.3H8l4.7 6.2zM17 19.8h1.8L7.1 4.1H5.1z"/></svg>
+      </a>
+    </div>
+    <p class="copyright">© <span id="year"></span> Chess Anurag Academy. All rights reserved.</p>
+  </div>
+</footer>
 
-    <footer>
-        <div class="container">
-            <div class="social-links" id="socials">
-                <a href="https://twitter.com/chessanurag" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.youtube.com/@chessanurag" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-            <p>&copy; 2025 Chess Anurag Academy. All Rights Reserved. Checkmate!</p>
-        </div>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
